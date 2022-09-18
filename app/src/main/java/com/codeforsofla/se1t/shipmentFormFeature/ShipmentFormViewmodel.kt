@@ -1,4 +1,4 @@
-package com.codeforsofla.se1t.ShipmentFormFeature
+package com.codeforsofla.se1t.shipmentFormFeature
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel

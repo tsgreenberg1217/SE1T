@@ -11,18 +11,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import java.text.SimpleDateFormat
+import com.codeforsofla.se1t.shippmentsFeature.ShippingData
 
 @Composable
 fun ShippingListScreen(shippingList: List<ShippingData>) {
-    LazyColumn(
-    ) {
+    LazyColumn(Modifier.fillMaxSize().padding(bottom = 50.dp),verticalArrangement = Arrangement.Top) {
         items(shippingList) { data ->
             Spacer(Modifier.height(20.dp))
             Row(
                 Modifier
-                    .padding(10.dp)
-                    .fillMaxWidth()
                     .background(Color.White, shape = RoundedCornerShape(3.dp))
                     .padding(10.dp),
                 Arrangement.SpaceBetween,
