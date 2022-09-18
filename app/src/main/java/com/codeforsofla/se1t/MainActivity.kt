@@ -83,7 +83,7 @@ fun MainScreen(goToForm: () -> Unit) {
                 Box(modifier = Modifier
                     .fillMaxWidth()
                     .drawBehind {
-                        val strokeWidth = 3 * density
+                        val strokeWidth = 1 * density
                         val y = size.height - strokeWidth / 2
 
                         drawLine(
