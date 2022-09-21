@@ -4,11 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.List
@@ -17,24 +18,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.codeforsofla.se1t.BottomNavState
-import com.codeforsofla.se1t.ShipmentFilterSwitch
+import com.codeforsofla.se1t.R
 import com.codeforsofla.se1t.ShipmentViewModel
 import com.codeforsofla.se1t.ShippingListScreen
 import com.codeforsofla.se1t.shipmentFormFeature.ShipmentFormActivity
+import com.codeforsofla.se1t.ui.theme.DDA_BLUE
+import com.codeforsofla.se1t.ui.theme.DDA_YELLOW
 import com.codeforsofla.se1t.ui.theme.Se1tTheme
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.launch
-import java.util.logging.Filter
 
 class MainActivity : ComponentActivity() {
 
@@ -42,10 +42,6 @@ class MainActivity : ComponentActivity() {
     private fun goToAddShipment() {
         val intent = Intent(this, ShipmentFormActivity::class.java)
         startActivity(intent)
-    }
-
-    private fun openFilterBottomSheet() {
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +65,6 @@ fun MainScreen(
 
     val sheetState = rememberModalBottomSheetState(
         initialValue = ModalBottomSheetValue.Hidden,
-        confirmStateChange = { it != ModalBottomSheetValue.HalfExpanded }
     )
     val viewModel: ShipmentViewModel = viewModel()
 
@@ -79,13 +74,21 @@ fun MainScreen(
 
     ModalBottomSheetLayout(
         sheetState = sheetState,
-        sheetContent = { FilterModalScreen() },) {
+        sheetShape = RoundedCornerShape(8.dp),
+        sheetContent = { FilterModalScreen() },
+    ) {
         Scaffold(
             scaffoldState = scaffoldState,
             topBar = {
                 TopAppBar(
-                    title = { Text("SETRK") },
-                    backgroundColor = MaterialTheme.colors.background
+                    title = {
+//                        Image(
+//                            painterResource(id = R.drawable.ftldda_logo),
+//                            contentDescription = ""
+//                        )
+                        Text(text = "SETRK")
+                    },
+                    backgroundColor = Color.White
                 )
 
             },
@@ -93,7 +96,7 @@ fun MainScreen(
                 Row(
                     Modifier
                         .fillMaxWidth()
-                        .background(Color.Cyan)
+                        .background(DDA_BLUE)
                         .height(50.dp), Arrangement.SpaceEvenly
                 ) {
                     IconButton(onClick = {
@@ -101,11 +104,11 @@ fun MainScreen(
                             if (sheetState.isVisible) sheetState.hide() else sheetState.show()
                         }
                     }) {
-                        Icon(Icons.Default.Search, "", Modifier.size(40.dp))
+                        Icon(Icons.Default.Search, "", Modifier.size(40.dp), tint = Color.White)
                     }
 
                     IconButton(onClick = addShipment) {
-                        Icon(Icons.Rounded.Add, "", Modifier.size(40.dp))
+                        Icon(Icons.Rounded.Add, "", Modifier.size(40.dp), tint = Color.White)
                     }
                 }
             },
@@ -120,6 +123,8 @@ fun MainScreen(
                     TabRow(
                         // Our selected tab is our current page
                         selectedTabIndex = pagerState.currentPage,
+                        backgroundColor = DDA_YELLOW,
+                        contentColor = Color.White,
                         // Override the indicator, using the provided pagerTabIndicatorOffset modifier
                         indicator = { tabPositions ->
                             TabRowDefaults.Indicator(
