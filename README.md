@@ -1,11 +1,9 @@
-#CFS
-
-
+# CFS
 
 - Ongoing debugging and all new features pass QA testing before production push from staging.
 
-
 ## New Features
+
 TODO - Coming soon
 
 ### Use this app to coordinate and navigate Huizenga Park and the new Restaurant coming in 2024
