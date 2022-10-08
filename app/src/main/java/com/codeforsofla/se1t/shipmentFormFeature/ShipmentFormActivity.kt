@@ -1,4 +1,4 @@
-package com.codeforsofla.se1t.ShipmentFormFeature
+package com.codeforsofla.se1t.shipmentFormFeature
 
 import android.app.DatePickerDialog
 import android.content.Context
@@ -7,7 +7,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -82,7 +81,11 @@ class ShipmentFormActivity : ComponentActivity() {
             )
 
             Button(onClick = { finish() }, Modifier.fillMaxWidth().padding(horizontal = 80.dp)) {
-                Text(text = "Submit", color = Color.White)
+                Text(text = "Submit_test", color = Color.Red)
+                /*This is to add UI dev8 testing dev-branch-a
+                * ...*/
+
+               // Text(text = "Submit", color = Color.White)
             }
         }
 
