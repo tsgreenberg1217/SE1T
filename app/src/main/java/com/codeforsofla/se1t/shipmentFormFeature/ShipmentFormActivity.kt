@@ -81,7 +81,11 @@ class ShipmentFormActivity : ComponentActivity() {
             )
 
             Button(onClick = { finish() }, Modifier.fillMaxWidth().padding(horizontal = 80.dp)) {
-                Text(text = "Submit", color = Color.White)
+                Text(text = "Submit_test", color = Color.Red)
+                /*This is to add UI dev8 testing dev-branch-a
+                * ...*/
+
+               // Text(text = "Submit", color = Color.White)
             }
         }
 

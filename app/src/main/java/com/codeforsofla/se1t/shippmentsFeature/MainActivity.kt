@@ -108,49 +108,50 @@ fun MainScreen(
                         Icon(Icons.Rounded.Add, "", Modifier.size(40.dp))
                     }
                 }
-            },
-            content = { _ ->
-                val pagerState = rememberPagerState()
-                val iconList = remember {
-                    listOf(Icons.Rounded.Person, Icons.Rounded.List)
-
-                }
-
-                Column(Modifier.fillMaxSize()) {
-                    TabRow(
-                        // Our selected tab is our current page
-                        selectedTabIndex = pagerState.currentPage,
-                        // Override the indicator, using the provided pagerTabIndicatorOffset modifier
-                        indicator = { tabPositions ->
-                            TabRowDefaults.Indicator(
-                                Modifier.pagerTabIndicatorOffset(pagerState, tabPositions)
-                            )
-                        }
-                    ) {
-                        // Add tabs for all of our pages
-
-                        iconList.forEachIndexed { index, icon ->
-                            Tab(
-                                text = { Icon(icon, "") },
-                                selected = pagerState.currentPage == index,
-                                onClick = { /* TODO */ },
-                            )
-                        }
-                    }
-                    HorizontalPager(
-                        count = 2,
-                        state = pagerState
-                    ) { page ->
-                        ShippingListScreen(viewModel.state.value.run {
-                            if (page == 0) personalShipments else filteredShipments
-                        })
-
-                    }
-                }
-
+            }
+        ) { _ ->
+            val pagerState = rememberPagerState()
+            val iconList = remember {
+                listOf(Icons.Rounded.Person, Icons.Rounded.List)
 
             }
-        )
+
+            Column(Modifier.fillMaxSize()) {
+                TabRow(
+                    // Our selected tab is our current page
+                    selectedTabIndex = pagerState.currentPage,
+                    // Override the indicator, using the provided pagerTabIndicatorOffset modifier
+                    indicator = { tabPositions ->
+                        TabRowDefaults.Indicator(
+                            Modifier.pagerTabIndicatorOffset(pagerState, tabPositions)
+                        )
+                    }
+                ) {
+                    // Add tabs for all of our pages
+
+                    iconList.forEachIndexed { index, icon ->
+                        Tab(
+                            text = { Icon(icon, "") },
+                            selected = pagerState.currentPage == index,
+                            onClick = { /* TODO */ },
+                        )
+                    }
+                }
+                HorizontalPager(
+                    count = 2,
+                    state = pagerState
+                ) { page ->
+                    ShippingListScreen(viewModel.state.value.run {
+                        if (page == 0) personalShipments else filteredShipments
+                        // what do we do if page == 1,
+                        // and page == 2 personalShipments and filteredShipments needs < page == 3(conditional)?
+                    })
+
+                }
+            }
+
+
+        }
 
     }
 

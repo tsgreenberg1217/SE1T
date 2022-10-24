@@ -32,8 +32,8 @@ fun FilterModalScreen() {
             }) {
             Text(text = "Filters", fontSize = 28.sp)
         }
-        ShipmentFilterSwitch(name = "Brad's Beds")
-        ShipmentFilterSwitch(name = "Matt's Mattresess")
+        ShipmentFilterSwitch(name = "Tod's Beds")
+        ShipmentFilterSwitch(name = "Matt's Mattresses")
 
     }
 }

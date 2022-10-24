@@ -30,6 +30,7 @@ class ShipmentViewModel : ViewModel() {
         state.value = state.value.copy(
             filteredShipments = initialData.toMutableList(),
             personalShipments = initialData.filter { it.recipient == "Todd" },
+            // What else could be done with this state?
             bottomNavState = BottomNavState.All
         )
 
@@ -54,6 +55,7 @@ class ShipmentViewModel : ViewModel() {
         state.value = state.value.copy(
             shipmentsToFilter = ids,
             filteredShipments = filteredShipments
+
         )
     }
 }
